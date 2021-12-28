@@ -1,0 +1,63 @@
+package com.example.apiKotlin.ApiKotlin
+
+import com.fasterxml.jackson.annotation.JsonFormat
+
+import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.MethodArgumentNotValidException
+import org.springframework.web.bind.annotation.ExceptionHandler
+import org.springframework.web.bind.annotation.RestControllerAdvice
+import java.time.LocalDateTime
+import javax.persistence.EntityNotFoundException
+
+@RestControllerAdvice
+class ExceptionHandler {
+
+    companion object{
+        const val ENTITY_ALREADY_EXISTS = "ENTITY_ALREADY_EXISTS"
+        const val NOT_FOUND = "NOT_FOUND"
+        const val BAD_REQUEST = "BAD_REQUEST"
+        const val INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR"
+    }
+
+    @ExceptionHandler(value = [
+        AccountAlreadyExistsException::class,
+        UserAlreadyExistsException::class,
+        PersonAlreadyExistsException::class
+    ])
+    fun handleEntityAlreadyExistsException(e: RuntimeException): ResponseEntity<ErrorResponse> =
+        ResponseEntity<ErrorResponse>(ErrorResponse(ENTITY_ALREADY_EXISTS,
+            e.message, HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST)
+
+    @ExceptionHandler(value = [
+        BadRequestException::class,
+        AccountDepositLimitException::class,
+        MethodArgumentNotValidException::class
+    ])
+    fun handleBadRequestException(e: RuntimeException): ResponseEntity<ErrorResponse> =
+        ResponseEntity<ErrorResponse>(ErrorResponse(BAD_REQUEST,
+            e.message, HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST)
+
+    @ExceptionHandler(value = [
+        NotFoundException::class,
+        EntityNotFoundException::class
+    ])
+    fun handleNotFoundException(e: RuntimeException): ResponseEntity<ErrorResponse> =
+        ResponseEntity<ErrorResponse>(ErrorResponse(NOT_FOUND,
+            e.message, HttpStatus.NOT_FOUND.value()), HttpStatus.NOT_FOUND)
+
+    @ExceptionHandler(value = [DataIntegrityViolationException::class])
+    fun handleInternalServerError(e: RuntimeException): ResponseEntity<ErrorResponse> =
+        ResponseEntity<ErrorResponse>(ErrorResponse(INTERNAL_SERVER_ERROR,
+            e.message, HttpStatus.INTERNAL_SERVER_ERROR.value()), HttpStatus.INTERNAL_SERVER_ERROR)
+
+}
+
+data class ErrorResponse(
+    val error: String,
+    val message: String?,
+    val status: Int,
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+    val timestamp: LocalDateTime = LocalDateTime.now()
+)
