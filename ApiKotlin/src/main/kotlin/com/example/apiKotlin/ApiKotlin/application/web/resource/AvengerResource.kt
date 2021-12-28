@@ -1,6 +1,6 @@
 package com.example.apiKotlin.ApiKotlin.application.web.resource
 
-import com.example.apiKotlin.ApiKotlin.application.domain.AvengerRepository
+import com.example.apiKotlin.ApiKotlin.domain.AvengerRepository
 import com.example.apiKotlin.ApiKotlin.application.web.resource.request.AvengerRequest
 import com.example.apiKotlin.ApiKotlin.application.web.resource.response.AvengerResponse
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,7 +25,7 @@ class AuthorityResource(
     }
 
 
-    @GetMapping("{id")
+    @GetMapping("{id}/detail")
     fun getAvengersDetails(@PathVariable("id") id: Long) =
         repository.getDetail(id).let{
             ResponseEntity.ok().body(AvengerResponse.from(it))

@@ -1,8 +1,7 @@
 package com.example.apiKotlin.ApiKotlin.application.web.resource.request
 
-import com.example.apiKotlin.ApiKotlin.application.domain.Avenger
+import com.example.apiKotlin.ApiKotlin.domain.Avenger.Avenger
 import com.sun.istack.NotNull
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotEmpty
 

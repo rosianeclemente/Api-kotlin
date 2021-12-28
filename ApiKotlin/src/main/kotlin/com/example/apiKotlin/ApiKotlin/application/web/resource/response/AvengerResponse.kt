@@ -1,6 +1,6 @@
 package com.example.apiKotlin.ApiKotlin.application.web.resource.response
 
-import com.example.apiKotlin.ApiKotlin.application.domain.Avenger
+import com.example.apiKotlin.ApiKotlin.domain.Avenger.Avenger
 
 data class AvengerResponse(
     val id: Long? = null,
