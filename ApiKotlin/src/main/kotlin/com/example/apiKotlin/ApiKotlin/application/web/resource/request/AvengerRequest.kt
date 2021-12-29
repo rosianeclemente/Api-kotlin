@@ -15,14 +15,14 @@ data class AvengerRequest(
     @field:NotEmpty
     val id: Long,
     val person: String,
-    val description: String? = "",
-    val history: String? = ""
+    val description: String? = null,
+    val history: String? = null
 ){
     fun toAvenger()=  Avenger(
         nick = nick,
         person = person,
         description = description,
-        history = description )
+        history = history )
     companion object{
         fun to(id: Long?, request: AvengerRequest) = Avenger(
             id = id,
