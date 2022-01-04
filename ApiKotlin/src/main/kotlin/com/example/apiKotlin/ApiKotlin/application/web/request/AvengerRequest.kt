@@ -1,6 +1,6 @@
-package com.example.apiKotlin.ApiKotlin.application.web.resource.request
+package com.example.apiKotlin.ApiKotlin.application.web.request
 
-import com.example.apiKotlin.ApiKotlin.domain.Avenger.Avenger
+import com.example.apiKotlin.ApiKotlin.domain.Avenger
 import com.sun.istack.NotNull
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotEmpty

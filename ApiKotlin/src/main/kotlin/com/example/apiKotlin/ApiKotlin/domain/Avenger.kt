@@ -1,4 +1,4 @@
-package com.example.apiKotlin.ApiKotlin.domain.Avenger
+package com.example.apiKotlin.ApiKotlin.domain
 
 import org.springframework.data.jpa.domain.AbstractPersistable
 import java.io.Serializable

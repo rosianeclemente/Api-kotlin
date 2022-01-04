@@ -1,8 +1,8 @@
-package com.example.apiKotlin.ApiKotlin.application.web.resource
+package com.example.apiKotlin.ApiKotlin.application.web
 
 import com.example.apiKotlin.ApiKotlin.domain.AvengerRepository
-import com.example.apiKotlin.ApiKotlin.application.web.resource.request.AvengerRequest
-import com.example.apiKotlin.ApiKotlin.application.web.resource.response.AvengerResponse
+import com.example.apiKotlin.ApiKotlin.application.web.request.AvengerRequest
+import com.example.apiKotlin.ApiKotlin.application.web.response.AvengerResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional

@@ -1,6 +1,6 @@
 package com.example.apiKotlin.ApiKotlin.resource
 
-import com.example.apiKotlin.ApiKotlin.domain.Avenger.Avenger
+import com.example.apiKotlin.ApiKotlin.domain.Avenger
 import com.example.apiKotlin.ApiKotlin.domain.AvengerRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull

@@ -1,7 +1,6 @@
 package com.example.apiKotlin.ApiKotlin.resource
 
-import com.example.apiKotlin.ApiKotlin.application.web.resource.request.AvengerRequest
-import com.example.apiKotlin.ApiKotlin.domain.Avenger.Avenger
+import com.example.apiKotlin.ApiKotlin.domain.Avenger
 import javax.persistence.*
 
 @Entity
@@ -17,11 +16,7 @@ class AvengerEntity (
     val description: String?,
     val history: String?
 ){
-    fun toAvenger()=  Avenger(
-        nick = nick,
-        person = person,
-        description = description,
-        history = history )
+    fun toAvenger()=  Avenger(id, nick,person,description,history )
     companion object{
         fun from (avenger: Avenger) = AvengerEntity(
             id = avenger.id,
