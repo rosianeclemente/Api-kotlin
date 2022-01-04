@@ -26,9 +26,8 @@ class AuthorityResource(
 
 
     @GetMapping("{id}/detail")
-    fun getAvengersDetails(@PathVariable("id") id: Long) =
-        repository.getDetail(id).let{
-            ResponseEntity.ok().body(AvengerResponse.from(it))
+    fun getAvengerDetails(@PathVariable("id") id: Long) =
+        repository.getDetail(id)?.let{ ResponseEntity.ok().body(AvengerResponse.from(it))
         } ?: ResponseEntity.notFound().build<Void>()
 
 

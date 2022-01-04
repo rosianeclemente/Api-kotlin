@@ -5,6 +5,7 @@ import com.example.apiKotlin.ApiKotlin.domain.Avenger.Avenger
 import javax.persistence.*
 
 @Entity
+@Table(name = "avenger")
 class AvengerEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
